@@ -1,24 +1,13 @@
-# README
+# AIRBNB DOG version
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This project is in Ruby on Rails. 
 
-Things you may want to cover:
+<p>There are three different table: Dog, Dogsitter and Stroll.   
 
-* Ruby version
+<li>A Stroll has a date, a dogsitter and a dog.</li>   
 
-* System dependencies
+<li>A dog has many dogsitter and many strolls.  </li>
 
-* Configuration
+<li>A dogsitter has many strolls and many dogs.</li></p>
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
