@@ -16,20 +16,30 @@
 
 <p>Do a Bundle Install to get last versions of Ruby, Rails and used Gems:</p>
 
-```bundle install```
+```ruby
+bundle install
+```
 
 <p>Go the the rail console by using:</p>
 
-```rails c```
+```ruby
+rails c
+```
 
 <p>Table Print all Dogs: </p>
 
-```tp Dog.all```
+```ruby
+tp Dog.all
+```
 
 <p>Table Print all Dogsitters: </p>
 
-```tp Dogsitter.all```
+```ruby
+tp Dogsitter.all
+```
 
 <p>Table Print all Strolls</p>
 
-```tp Stroll.all```
+```ruby
+tp Stroll.all
+```
