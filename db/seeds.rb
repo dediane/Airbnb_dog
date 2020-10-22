@@ -10,21 +10,35 @@ require 'faker'
 Dog.destroy_all
 Dogsitter.destroy_all
 Stroll.destroy_all
+City.destroy_all
+
+10.times do 
+  city = City.create!(
+    name: Faker::Address.city
+  )
+end
+
 10.times do 
   dog = Dog.create!(
     name: Faker::Creature::Dog.name,
     breed: Faker::Creature::Dog.breed,
-    age: Faker::Creature::Dog.age
+    age: Faker::Creature::Dog.age,
+    city: City.all.sample
   )
   dogsitter = Dogsitter.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     age: Faker::Number.between(from: 18, to: 60),
+    city: City.all.sample
   )
 end
 
 15.times do 
   dogsitter = Dogsitter.all.sample
   dog = Dog.all.sample
-  stroll = Stroll.create!(dogsitter:dogsitter, dog:dog, date: Faker::Time.between_dates(from: Date.today, to: Date.today + 10, period: :day))
+  stroll = Stroll.create!(
+    dogsitter:dogsitter, 
+    dog:dog, 
+    city: dog.city,
+    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 10, period: :day))
 end

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_155613) do
+ActiveRecord::Schema.define(version: 2020_10_22_202834) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
@@ -18,6 +24,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_155613) do
     t.string "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_dogs_on_city_id"
   end
 
   create_table "dogsitters", force: :cascade do |t|
@@ -26,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_155613) do
     t.string "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_dogsitters_on_city_id"
   end
 
   create_table "strolls", force: :cascade do |t|
@@ -34,8 +44,13 @@ ActiveRecord::Schema.define(version: 2020_10_22_155613) do
     t.integer "dogsitter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_strolls_on_city_id"
     t.index ["dog_id"], name: "index_strolls_on_dog_id"
     t.index ["dogsitter_id"], name: "index_strolls_on_dogsitter_id"
   end
 
+  add_foreign_key "dogs", "cities"
+  add_foreign_key "dogsitters", "cities"
+  add_foreign_key "strolls", "cities"
 end
